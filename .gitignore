@@ -1,0 +1,22 @@
+# Node dependencies
+node_modules/
+
+# Python virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Local databases
+instance/
+*.db
+
+# Log and temp files
+*.log
+.DS_Store
+
+# IDE / Editor folders
+.vscode/
+.idea/
+

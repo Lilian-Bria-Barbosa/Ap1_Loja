@@ -1,0 +1,21 @@
+# Ignorar dependências Node
+node_modules/
+
+# Ignorar ambiente virtual Python
+venv/
+
+# Ignorar cache Python
+__pycache__/
+*.pyc
+
+# Ignorar banco de dados local
+instance/
+*.db
+
+# Ignorar arquivos temporários
+*.log
+.DS_Store
+
+# Ignorar configurações locais de IDE
+.vscode/
+.idea/
