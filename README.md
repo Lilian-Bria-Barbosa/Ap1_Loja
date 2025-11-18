@@ -1,140 +1,100 @@
-🏬 Loja API + Frontend (Flask + SQLite + Next.js)
-📌 Propósito do Projeto
+🏬 Loja API + Frontend
 
-Este sistema tem como objetivo gerenciar estoque e vendas, incluindo:
+Sistema completo de controle de estoque e vendas — Flask + SQLite + Next.js
+
+📌 Sobre o Projeto
+
+Este projeto consiste em uma aplicação completa com backend em Flask e frontend em Next.js, permitindo o gerenciamento de:
 
 Produtos
-
 Categorias
-
-Entradas e saídas
-
-Vendas (com baixa automática no estoque)
-
+Entradas e saídas de estoque
+Vendas (com baixa automática)
 Clientes
-
 Funcionários
 
-A API é construída em Flask + SQLite e o frontend em Next.js.
+A API utiliza SQLite como banco local e oferece documentação via Swagger.
 
-🚀 Como executar o projeto
+🚀 Como Executar o Projeto
 
-Para rodar corretamente, abra dois terminais:
+⚠️ Importante:
+Para rodar corretamente, você precisa abrir dois terminais:
 
-Terminal 1 → Backend Flask
+Terminal 1 → Backend (Flask)
 
-Terminal 2 → Frontend Next.js (npm run dev)
+Terminal 2 → Frontend (Next.js)
 
-Abaixo está o passo a passo completo.
-
-🖥️ Terminal 1 — Rodando a API (Flask)
-
-Crie e ative o ambiente virtual (opcional)
-
+🖥️ 1️⃣ Terminal 1 — Executando a API (Flask)
+1. Crie e ative o ambiente virtual (opcional)
 python -m venv venv
 source venv/bin/activate   # macOS/Linux
 venv\Scripts\activate      # Windows
 
-
-Instale as dependências
-
+2. Instale as dependências
 pip install -r requirements.txt
 
-
-Inicie a API
-
+3. Inicie o servidor Flask
 python app.py
 
+4. Endpoints disponíveis
 
-Acesse:
+API Root: http://127.0.0.1:5000/
 
-API root → http://127.0.0.1:5000
+Swagger UI: http://127.0.0.1:5000/docs
 
-Swagger (documentação) → http://127.0.0.1:5000/docs
-
-🌐 Terminal 2 — Rodando o Frontend (Next.js)
-
-Acesse a pasta do frontend:
-
+🌐 2️⃣ Terminal 2 — Executando o Frontend (Next.js)
+1. Acesse a pasta do frontend
 cd frontend
 
-
-Instale as dependências:
-
+2. Instale as dependências
 npm install
 
-
-Execute o servidor de desenvolvimento:
-
+3. Inicie o servidor de desenvolvimento
 npm run dev
 
-
-Acesse no navegador:
-
+4. Acesse no navegador
 http://localhost:3000
 
-
-⚠️ O frontend depende da API Flask. Portanto, o backend deve estar rodando antes.
-
-🧰 Stack Utilizada
+🧰 Tecnologias Utilizadas
 Backend
-
 Python
-
 Flask
-
 Flask-SQLAlchemy
-
 Flask-Marshmallow
-
 Flasgger (Swagger)
-
 SQLite
 
 Frontend
-
 Next.js
-
 React
+(Opcional) TailwindCSS
 
-Tailwind (se estiver usando)
-
-🔗 Endpoints principais (prefixo /api)
+🔗 Endpoints Principais (prefixo /api)
 Produtos
 
 CRUD → /api/produtos
-
-Movimentações de estoque
-
+Movimentações
 Entrada → POST /api/entrada
-
 Saída → POST /api/saida
 
 Vendas
 
-Criar venda (gera saída automática) → POST /api/vendas
+Criar venda → POST /api/vendas
+(gera saída automática do estoque)
 
 Itens
 
-Listar → GET /api/itens
-
-Buscar por ID → GET /api/itens/<id>
+GET /api/itens
+GET /api/itens/<id>
 
 Clientes
-
 CRUD → /api/clientes
 
 Funcionários
-
 CRUD → /api/funcionarios
 
 👥 Integrantes do Grupo
 
 Cindy Joyce (SI)
-
 Lilian Barbosa (ADS)
-
-Leticia Policeno (SI)
-
 Lavinia Braga (SI)
-Grupo: Cindy Joyce (SI), Lilian Barbosa (ADS), Lavinia Braga (SI)
