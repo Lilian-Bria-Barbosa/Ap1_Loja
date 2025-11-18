@@ -10,6 +10,12 @@ export default function HomePage() {
         Selecione uma opção no menu lateral para começar.
       </p>
 
+      <h2>
+        <p className="mt-4 txt-gray-600">
+          Bem vindo ao Gerenciador de Estoque Brizart!
+        </p>
+      </h2>
+
       <div className="mt-10 bg-white p-6 rounded-2xl shadow-md">
         <CategoriaChart />
     </div>

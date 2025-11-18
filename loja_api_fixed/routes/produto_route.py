@@ -3,9 +3,8 @@ from controllers.produto_controller import criar_produto, listar_produtos, get_p
 from extensions import db
 from models.produto_model import Produto
 
-produto_bp = Blueprint('produto_bp', __name__)
+produto_bp = Blueprint('produto_bp', __name__, url_prefix="/api/produtos") 
 
-# ------------------ CRIAR PRODUTO ------------------
 @produto_bp.route('', methods=['POST'])
 def criar():
     """Descrição: Criar produto"""
@@ -18,13 +17,12 @@ def criar():
             'nome': p.nome,
             'descricao': p.descricao,
             'tamanho': p.tamanho,
-            'preco_unit': p.preco_unit,
-            'qtd_estoque': p.qtd_estoque
+            'preco': p.preco_unit,              
+            'quantidade_estoque': p.qtd_estoque 
         }), 201
     return jsonify(res[0]), res[1]
 
 
-# ------------------ LISTAR PRODUTOS ------------------
 @produto_bp.route('', methods=['GET'])
 def listar():
     """Descrição: Listar produtos"""
@@ -33,14 +31,13 @@ def listar():
         'id': p.id,
         'nome': p.nome,
         'descricao': p.descricao,
-        'tamanho': p.tamanho,        
-        'preco_unit': p.preco_unit,
-        'qtd_estoque': p.qtd_estoque
+        'tamanho': p.tamanho,
+        'preco': p.preco_unit,             
+        'quantidade_estoque': p.qtd_estoque 
     } for p in produtos]
     return jsonify(out)
 
 
-# ------------------ OBTÉM UM PRODUTO ------------------
 @produto_bp.route('/<int:pid>', methods=['GET'])
 def get_one(pid):
     """Descrição: get_one"""
@@ -51,13 +48,13 @@ def get_one(pid):
         'id': p.id,
         'nome': p.nome,
         'descricao': p.descricao,
-        'tamanho': p.tamanho,        
-        'preco_unit': p.preco_unit,
-        'qtd_estoque': p.qtd_estoque
+        'tamanho': p.tamanho, 
+        'preco': p.preco_unit,             
+        'quantidade_estoque': p.qtd_estoque 
     })
 
 
-# ------------------ ATUALIZAR PRODUTO ------------------
+
 @produto_bp.route('/<int:pid>', methods=['PUT'])
 def atualizar(pid):
     """Descrição: Atualizar produto existente"""
@@ -66,17 +63,33 @@ def atualizar(pid):
         return jsonify({'error': 'Produto não encontrado'}), 404
 
     data = request.get_json() or {}
+    
     p.nome = data.get('nome', p.nome)
     p.descricao = data.get('descricao', p.descricao)
     p.tamanho = data.get('tamanho', p.tamanho)
-    p.preco_unit = float(data.get('preco_unit', p.preco_unit))
-    p.qtd_estoque = int(data.get('qtd_estoque', p.qtd_estoque))
+    
+    try:
+        if 'preco' in data:
+            p.preco_unit = float(data['preco'])
+        
+        if 'quantidade_estoque' in data:
+            p.qtd_estoque = int(data['quantidade_estoque'])
+            
+    except (ValueError, TypeError):
+        return jsonify({'error': 'Os campos de preço e quantidade devem ser numéricos.'}), 400
 
     db.session.commit()
-    return jsonify({'message': 'Produto atualizado com sucesso'}), 200
+    
+    return jsonify({
+        'id': p.id,
+        'nome': p.nome,
+        'descricao': p.descricao,
+        'tamanho': p.tamanho,
+        'preco': p.preco_unit,
+        'quantidade_estoque': p.qtd_estoque
+    }), 200
 
 
-# ------------------ DELETAR PRODUTO ------------------
 @produto_bp.route('/<int:pid>', methods=['DELETE'])
 def deletar(pid):
     """Descrição: Excluir produto"""
