@@ -44,7 +44,7 @@ Swagger UI: http://127.0.0.1:5000/docs
 
 🌐 2️⃣ Terminal 2 — Executando o Frontend (Next.js)
 1. Acesse a pasta do frontend
-cd frontend
+cd frontend-nextjs
 
 2. Instale as dependências
 npm install
@@ -98,3 +98,4 @@ CRUD → /api/funcionarios
 Cindy Joyce (SI)
 Lilian Barbosa (ADS)
 Lavinia Braga (SI)
+
