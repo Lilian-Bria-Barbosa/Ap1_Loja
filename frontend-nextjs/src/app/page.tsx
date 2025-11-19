@@ -16,9 +16,10 @@ export default function HomePage() {
         </p>
       </h2>
 
-      <div className="mt-10 bg-white p-6 rounded-2xl shadow-md">
-        <CategoriaChart />
+      <div className="mt-10 bg-white p-6 rounded-2xl shadow-md h-80">
+      <CategoriaChart />
     </div>
+
     </div>
 
     

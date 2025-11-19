@@ -10,7 +10,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
-      <body className="flex bg-gray-100">
+      <body className="flex bg-gray-100 min-h-screen">
 
         {/* Sidebar */}
         <aside className="w-64 h-screen bg-gray-900 text-white flex flex-col p-4 shadow-lg">
@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </aside>
 
         {/* Conteúdo */}
-        <main className="flex-1 p-8">{children}</main>
+        <main className="flex-1 p-8 min-h-screen">{children}</main>
       </body>
     </html>
   );
